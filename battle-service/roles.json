@@ -1,0 +1,56 @@
+[
+  {
+    "id": "1001",
+    "name": "肥宅1號",
+    "hp": 180,
+    "atk": 8,
+    "luck": 20,
+    "skills": [
+      {
+        "id": "1001_1",
+        "name": "肥宅衝撞",
+        "damage": 15,
+        "freezingTime": 3
+      },
+      {
+        "id": "1001_2",
+        "name": "肥宅OneTwo",
+        "damage": 20,
+        "freezingTime": 5
+      },
+      {
+        "id": "1001_3",
+        "name": "泰山壓頂",
+        "damage": 30,
+        "freezingTime": 7
+      }
+    ]
+  },
+  {
+    "id": "1002",
+    "name": "五肥悟",
+    "hp": 130,
+    "atk": 12,
+    "luck": 30,
+    "skills": [
+      {
+        "id": "1001_1",
+        "name": "肥式反轉",
+        "damage": 23,
+        "freezingTime": 7
+      },
+      {
+        "id": "1001_2",
+        "name": "肥式順轉",
+        "damage": 23,
+        "freezingTime": 7
+      },
+      {
+        "id": "1001_3",
+        "name": "巨肥展開",
+        "damage": 40,
+        "freezingTime": 10
+      }
+    ]
+  }
+]

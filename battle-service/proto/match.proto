@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "battle-service/proto";
+
+
+service MatchService {
+  rpc Match(stream MatchRequest) returns (stream MatchResponse);
+}
+
+message MatchRequest {
+  string player_id = 1;
+}
+
+message MatchResponse {
+  string battle_id = 1;
+  string p1_id = 2;
+  string p2_id = 3;
+}

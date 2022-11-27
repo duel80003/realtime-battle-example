@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "battle-service/proto";
+
+service BattleService {
+  rpc RealtimeBattle(stream RealtimeBattleRequest) returns (stream RealtimeBattleResponse);
+}
+
+message RealtimeBattleRequest {
+  string battle_id = 1;
+  bool close = 2;
+}
+
+message RealtimeBattleResponse {
+  string battle_id = 1;
+  repeated RoleInfo role_infos = 2;
+  bool is_end = 3;
+  string winner = 4;
+}
+
+// 角色
+message Role {
+  string id = 1;
+}
+
+message Result {
+  string winner_id = 1;
+  int32 winner_reward = 2;
+  string loser_id = 3;
+  int32 loser_reward = 4;
+}
+
+message RoleInfo {
+  string role_id = 1;
+  string target_id = 2;
+  string skill_name = 3;
+  int32 damage = 4;
+  bool is_missed = 5;
+  string role_name = 6;
+  string target_role_name = 7;
+}
