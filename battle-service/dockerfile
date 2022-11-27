@@ -1,0 +1,32 @@
+FROM golang:1.19-buster as builder
+
+# Create and change to the app directory.
+WORKDIR /app
+
+# Retrieve application dependencies.
+# This allows the container build to reuse cached dependencies.
+# Expecting to copy go.mod and if present go.sum.
+COPY go.* ./
+
+RUN go mod download
+# Copy local code to the container image.
+COPY . ./
+
+# Build the binary.
+RUN go build -v -o battle_service
+
+# Use the official Debian slim image for a lean production container.
+# https://hub.docker.com/_/debian
+# https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
+FROM debian:buster-slim
+ARG ENV_FILE
+# Copy the binary to the production image from the builder stage.　
+
+COPY --from=builder /app/.env .env
+COPY --from=builder /app/roles.json roles.json
+COPY --from=builder /app/battle_service /app/battle_service
+
+EXPOSE 8080
+
+# Run the web service on container startup.
+CMD ["/app/battle_service"]

@@ -27,6 +27,7 @@ func init() {
 func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/ws", controllers.EntryHandler)
+	router.HandleFunc("/ping", controllers.PingHandler)
 	host := os.Getenv("HOST")
 	srv := &http.Server{
 		Addr: host,
