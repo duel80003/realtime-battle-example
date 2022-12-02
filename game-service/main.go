@@ -23,6 +23,7 @@ func init() {
 	}
 	tools.LogInit()
 	conn.InitBattleGRPCConn()
+
 }
 func main() {
 	router := mux.NewRouter()
